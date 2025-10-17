@@ -8,10 +8,5 @@ class Platform(
     @SerializedName("name")
     val name: String,
 ) {
-    fun toPlatform(): Platform {
-        return Platform(
-            id = id,
-            name = name
-        )
-    }
+
 }

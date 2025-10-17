@@ -1,5 +1,6 @@
-import ar.edu.unicen.catalog.BuildConfig
-import ar.edu.unicen.catalog.ddl.data.GameApiService
+package ar.edu.unicen.seminario
+
+import ar.edu.unicen.seminario.ddl.api.GameApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

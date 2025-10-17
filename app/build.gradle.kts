@@ -20,8 +20,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-            buildConfigField("String", "BASE_URL", "\"https://api.rawg.io/api/\"")
-            buildConfigField("String", "API_KEY", "\"8cffb153111246eeb28972a02df85674\"")
+        buildConfigField("String", "BASE_URL", "\"https://api.rawg.io/api/\"")
+        buildConfigField("String", "API_KEY", "\"8cffb153111246eeb28972a02df85674\"")
 
 
     }
@@ -34,16 +34,11 @@ android {
             applicationIdSuffix = ".dev"
             versionName = "-dev"
             dimension = "environment"
-
         }
         create("prod") {
             applicationIdSuffix = ".prod"
             versionName = "-prod"
             dimension = "environment"
-
-//            buildConfigField("String", "BASE_URL", "\"https://api.rawg.io/api/\"")
-//            buildConfigField("String", "API_KEY", "\"8cffb153111246eeb28972a02df85674\"")
-
         }
     }
 
@@ -60,7 +55,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-       // isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -86,7 +80,6 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.hilt.compiler)
     testImplementation(libs.junit)
-    //coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

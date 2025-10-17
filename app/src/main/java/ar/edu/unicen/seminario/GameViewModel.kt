@@ -12,16 +12,16 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// 1. Anota con @HiltViewModel para que Hilt sepa cómo inyectar dependencias aquí.
+//@HiltViewModel para que Hilt sepa cómo inyectar dependencias.
 @HiltViewModel
 class GameViewModel @Inject constructor(
-    private val repository: GameRepository // 2. Hilt inyectará el GameRepository que definiste en tu módulo.
+    private val repository: GameRepository //Hilt inyecta el GameRepository definido en GameModule.
 ) : ViewModel() {
 
-    // 3. Define un StateFlow privado y mutable para mantener el estado interno.
+    // StateFlow privado y mutable para mantener el estado interno.
     private val _games = MutableStateFlow<Game?>(null)
 
-    // 4. Expone una versión pública e inmutable (StateFlow) para que la UI la observe.
+    // Expone una versión pública e inmutable (StateFlow) para que la UI la observe.
     val games: StateFlow<Game?> = _games.asStateFlow()
 
     // Llama a esta función desde la UI para iniciar la carga de datos.
@@ -32,13 +32,13 @@ class GameViewModel @Inject constructor(
         // 5. Usa viewModelScope para lanzar una corrutina segura que se cancela si el ViewModel se destruye.
         viewModelScope.launch {
             try {
-                // 6. Llama a la función del repositorio (que está en un hilo de fondo gracias al withContext).
+                // Llama a la función del repositorio (que está en un hilo de fondo por withContext).
                 val gameData = repository.getGames(
-                    apiKey = "BuildConfig.API_KEY",
+                    apiKey = BuildConfig.API_KEY,
                     page = page,
                     pageSize = pageSize
                 )
-                // 7. Actualiza el StateFlow con los datos recibidos. La UI reaccionará a este cambio.
+                // Actualiza el StateFlow con los datos recibidos.
                 _games.value = gameData
             } catch (e: Exception) {
                 // Maneja cualquier error de la llamada de red.
