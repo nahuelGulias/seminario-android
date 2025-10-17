@@ -55,6 +55,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -79,6 +80,10 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.hilt.android)
     implementation(libs.hilt.compiler)
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    //viewModel generico de preview
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.2")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

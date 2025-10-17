@@ -15,7 +15,7 @@ class GameDataSource @Inject constructor(
         apiKey: String,
         page: Int,
         pageSize: Int
-    ): GameResponse? {
+    ): GameResponse {
         return withContext(Dispatchers.IO){
             val response = ApiService.getGames(apiKey, page, pageSize)
             val gameDto = response.body()

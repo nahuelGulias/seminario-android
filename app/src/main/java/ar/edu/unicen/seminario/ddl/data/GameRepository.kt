@@ -12,7 +12,7 @@ class GameRepository @Inject constructor(
         apiKey: String,
         page: Int,
         pageSize: Int
-    ): GameResponse? {
+    ): GameResponse {
 
         return RemoteDataSource.getGames(apiKey, page, pageSize)
     }

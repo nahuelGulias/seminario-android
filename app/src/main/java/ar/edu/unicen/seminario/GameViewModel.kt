@@ -3,6 +3,7 @@ package ar.edu.unicen.seminario
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import ar.edu.unicen.catalog.BuildConfig
 import ar.edu.unicen.seminario.ddl.data.GameRepository
 import ar.edu.unicen.seminario.ddl.models.Game
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,10 +20,10 @@ class GameViewModel @Inject constructor(
 ) : ViewModel() {
 
     // StateFlow privado y mutable para mantener el estado interno.
-    private val _games = MutableStateFlow<Game?>(null)
+    private val _games = MutableStateFlow<List<Game>>(emptyList())
 
     // Expone una versión pública e inmutable (StateFlow) para que la UI la observe.
-    val games: StateFlow<Game?> = _games.asStateFlow()
+    val games: StateFlow<List<Game>> = _games.asStateFlow()
 
     // Llama a esta función desde la UI para iniciar la carga de datos.
     fun getGames(
@@ -39,7 +40,7 @@ class GameViewModel @Inject constructor(
                     pageSize = pageSize
                 )
                 // Actualiza el StateFlow con los datos recibidos.
-                _games.value = gameData
+                _games.value = gameData.results
             } catch (e: Exception) {
                 // Maneja cualquier error de la llamada de red.
                 // Por ejemplo, podrías tener otro StateFlow para el estado de error.
