@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Seminario">
         <activity
-            android:name=".MainActivity"
+            android:name="ar.edu.unicen.seminario.GameActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Seminario">

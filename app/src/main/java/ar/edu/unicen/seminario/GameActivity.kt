@@ -11,7 +11,7 @@ import ar.edu.unicen.seminario.ui.screen.Home
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class GameActivity : ComponentActivity() {
 
     private val viewModel: GameViewModel by viewModels()
 

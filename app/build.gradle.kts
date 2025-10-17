@@ -11,6 +11,16 @@ android {
     namespace = "ar.edu.unicen.catalog"
     compileSdk = 36
 
+    packaging {
+        resources {
+            excludes += setOf(
+                "META-INF/gradle/incremental.annotation.processors",
+                "META-INF/AL2.0",
+                "META-INF/LGPL2.1"
+            )
+        }
+    }
+
     defaultConfig {
         applicationId = "ar.edu.unicen.catalog"
         minSdk = 26
